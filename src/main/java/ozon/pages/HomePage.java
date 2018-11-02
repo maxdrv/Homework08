@@ -3,6 +3,7 @@ package ozon.pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -74,20 +75,30 @@ public class HomePage extends BasePageObject {
             namesOfItems.add(addToCardButtonsList.get(i).getText());
         }
         return namesOfItems;*/
-
-        String tile = "//div[@class = 'tile']";
-        String name = "//div[@class = 'tile']//p[@class = 'name']";
+        //button[@class = 'buy-button blue-cream enlarged button flat-button tile-buy-button']/span
         ArrayList<String> namesOfItems = new ArrayList<>();
-        for (int i = 1; i <= amountOfItems; i++) {
-            String patern = String.format("//div[@class = 'item-view']/following-sibling::div[%d]", i);
-            String nameItemXpath = String.format("%s//p[@class = 'name']", patern);
-            String descriptionItem = BaseSteps.getDriver().findElement(By.xpath(nameItemXpath)).getText();
-            namesOfItems.add(descriptionItem);
+        int j = 1;
+        while (namesOfItems.size() < amountOfItems) {
+            String patern = String.format("//div[@class = 'item-view']/following-sibling::div[%d]", j);
+            String toCardXpath = String.format("%s//button[@class = 'buy-button blue-cream enlarged button flat-button tile-buy-button']/span", patern);
 
-            //span[contains(text(), 'корзину')]
-            //button[@class = 'buy-button blue-cream enlarged button flat-button tile-buy-button']
-            String toCardXpath = String.format("%s//span[contains(text(), 'корзину')]", patern);
-            BaseSteps.getDriver().findElement(By.xpath(toCardXpath)).click();
+            boolean present;
+            try {
+                BaseSteps.getDriver().findElement(By.xpath(toCardXpath));
+                present = true;
+            } catch (NoSuchElementException e) {
+                present = false;
+            }
+
+            if(true){
+                String nameItemXpath = String.format("%s//p[@class = 'name']", patern);
+                String descriptionItem = BaseSteps.getDriver().findElement(By.xpath(nameItemXpath)).getText();
+                namesOfItems.add(descriptionItem);
+
+                BaseSteps.getDriver().findElement(By.xpath(toCardXpath)).click();
+            }
+            j++;
+
         }
         return namesOfItems;
 

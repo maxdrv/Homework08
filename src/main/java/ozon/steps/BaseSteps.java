@@ -22,8 +22,12 @@ public class BaseSteps {
         return driver;
     }
 
+
     @Before
     public static void setUp() throws Exception{
+        ChromeOptions options = new ChromeOptions();
+        //options.addArguments("--headless");
+
         switch (properties.getProperty("browser")) {
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
@@ -31,13 +35,11 @@ public class BaseSteps {
                 break;
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
-                ChromeOptions options = new ChromeOptions();
-                //options.addArguments("--headless");
                 driver = new ChromeDriver(options);
                 break;
             default:
                 System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(options);
                 break;
         }
 

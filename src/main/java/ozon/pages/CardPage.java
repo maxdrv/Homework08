@@ -64,26 +64,18 @@ public class CardPage extends BasePageObject {
 
     public CardPage removeItemsFromCard() {
         waitForClickable(confirmTheOrderButton);
+        int amountOfRemoveButtons = removeButtonsList.size();
 
-        for (int i = 0; i < removeButtonsList.size(); i++) {
+        for (int i = 0; i < amountOfRemoveButtons; i++) {
             WebElement firstButton = BaseSteps.getDriver().findElement(By.xpath("//div[@class = 'jsViewCollection jsChild_DOM_split']/div[1]//div[@class = 'eCartControls_buttons']"));
-            //WebElement supEl = BaseSteps.getDriver().findElement(By.xpath("//div[@class = 'bFlatButton mWhite jsActivate']"));
-            //waitForClickable(supEl);
             waitForClickable(firstButton);
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             firstButton.click();
             try {
-                Thread.sleep(3000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
-        //waitForClickable(startShoppingButton);
         return this;
     }
 
@@ -95,39 +87,14 @@ public class CardPage extends BasePageObject {
     public HomePage signOutFromCard() {
         Actions action = new Actions(BaseSteps.getDriver());
         action.moveToElement(signOutFromCard).build().perform();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         action.moveToElement(signOutFromCard, 0, 171).click().build().perform();
         return new HomePage();
     }
-//    public CardPage removeItemsFromCard() {
-//        waitForVisible(confirmTheOrderButton);
-//        int amountOfRemoveButtons = removeButtonsList.size();
-//
-///*        for (WebElement element : removeButtonsList) {
-//            waitForVisible(element);
-//            element.click();
-//
-//            try {
-//                Thread.sleep(5000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }*/
-//        for (int i = 0; i < amountOfRemoveButtons; i++) {
-//
-//            WebElement firstButton = BaseSteps.getDriver().findElement(By.xpath("//div[@class = 'jsViewCollection jsChild_DOM_split']/div[1]//div[@class = 'eCartControls_buttons']"));
-//
-//            waitForVisible(firstButton);
-//            firstButton.click();
-//
-//            try {
-//                Thread.sleep(5000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return this;
-//    }
-
-
 
 }
