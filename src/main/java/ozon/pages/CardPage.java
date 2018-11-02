@@ -3,6 +3,8 @@ package ozon.pages;
 import org.apache.http.util.Asserts;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -69,15 +71,40 @@ public class CardPage extends BasePageObject {
         for (int i = 0; i < amountOfRemoveButtons; i++) {
             WebElement firstButton = BaseSteps.getDriver().findElement(By.xpath("//div[@class = 'jsViewCollection jsChild_DOM_split']/div[1]//div[@class = 'eCartControls_buttons']"));
             waitForClickable(firstButton);
-            firstButton.click();
+            //clickElementJS(firstButton);
             try {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Dimension size = firstButton.getSize();
+            Actions actions = new Actions(BaseSteps.getDriver());
+            actions.moveToElement(firstButton, size.getWidth() - 1, size.getHeight() - 1).click().build().perform();
+
+            try {
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+
+/*
+        boolean present;
+        try {
+            BaseSteps.getDriver().findElement(By.xpath("removeItemsButtonBanned"));
+            present = true;
+        } catch (NoSuchElementException e) {
+            present = false;
+        }
+        if(present){
+            removeItemsButtonBanned.click();
+        }*/
+
+        //waitForVisiable(confirmTheOrderButton);
         return this;
     }
+
+
 
     public CardPage checkCardTitle(String expectedText) {
         checkText(titleOfCardPage, expectedText);

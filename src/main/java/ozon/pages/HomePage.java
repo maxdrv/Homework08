@@ -90,7 +90,7 @@ public class HomePage extends BasePageObject {
                 present = false;
             }
 
-            if(true){
+            if(present){
                 String nameItemXpath = String.format("%s//p[@class = 'name']", patern);
                 String descriptionItem = BaseSteps.getDriver().findElement(By.xpath(nameItemXpath)).getText();
                 namesOfItems.add(descriptionItem);
