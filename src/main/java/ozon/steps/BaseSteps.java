@@ -4,6 +4,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ozon.util.TestBaseProperties;
 import ozon.util.TestUtil;
@@ -30,7 +31,9 @@ public class BaseSteps {
                 break;
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                //options.addArguments("--headless");
+                driver = new ChromeDriver(options);
                 break;
             default:
                 System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
@@ -38,7 +41,9 @@ public class BaseSteps {
                 break;
         }
 
+
         driver.manage().window().maximize();
+
         driver.manage().deleteAllCookies();
         //driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);

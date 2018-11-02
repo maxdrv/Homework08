@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/",
-        glue = {"ozon"},
-        format = {"pretty", "html:output"}
+        glue = {"ozon"}
+        //,format = {"pretty", "html:output"}
 )
 
 public class CucumberTest {

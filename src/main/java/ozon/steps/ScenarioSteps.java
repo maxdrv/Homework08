@@ -3,8 +3,9 @@ package ozon.steps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import ozon.util.TestBaseProperties;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class ScenarioSteps {
 
@@ -13,7 +14,7 @@ public class ScenarioSteps {
     LoginPageSteps loginPageSteps = new LoginPageSteps();
     CardPageSteps cardPageSteps = new CardPageSteps();
 
-    HashSet<String> items = new HashSet<>();
+    ArrayList<String> items = new ArrayList<>();
 
     @When("^Пользователь зашев в меню myOzon и выбрал кнопку$")
     public void choseSignIn() {
@@ -25,9 +26,9 @@ public class ScenarioSteps {
         loginPageSteps.signInUsingMailClick();
     }
 
-    @When("^Пользователь ввел логин: \"(.+)\" и пароль: \"(.+)\"$")
-    public void enterUsernamePassword(String username, String password) {
-        loginPageSteps.login(username, password);
+    @When("^Пользователь ввел логини и пароль$")
+    public void enterUsernamePassword() {
+        loginPageSteps.login();
     }
 
     @Then("^Выполнить поиск по \"(.+)\"$")
@@ -57,7 +58,7 @@ public class ScenarioSteps {
 
     @And("^Разлогиниться с сервиса$")
     public void logOutFromService() {
-        cardPageSteps.myOzonMenuSignOutClick();
+        cardPageSteps.signOutFromCardPage();
     }
 
     @And("^Проверить, что \"(.+)\"$")
@@ -70,4 +71,8 @@ public class ScenarioSteps {
         homePageSteps.repeatPopUpMenu();
     }
 
+    @Then("^Перейти в корзину после$")
+    public void moveToCard2() {
+        homePageSteps.moveToCard2();
+    }
 }

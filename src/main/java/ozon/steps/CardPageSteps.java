@@ -3,13 +3,14 @@ package ozon.steps;
 import ozon.pages.CardPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class CardPageSteps {
 
 
     @Step("Проверка соответствя содержимого корзины")
-    public void checkCardItems(HashSet<String> items) {
+    public void checkCardItems(ArrayList<String> items) {
         new CardPage().checkCardItems(items);
     }
 
@@ -19,12 +20,12 @@ public class CardPageSteps {
     }
 
     @Step("Выход из корзины")
-    public void myOzonMenuSignOutClick() {
-        new CardPage().myOzonMenuSignOutClick();
+    public void signOutFromCardPage() {
+        new CardPage().signOutFromCard();
     }
 
     @Step("Проверка наличия текста {0}")
     public void checkShoppingCardForEmpty(String expectedText) {
-        new CardPage().checkShoppingCardForEmpty(expectedText);
+        new CardPage().checkCardTitle(expectedText);
     }
 }

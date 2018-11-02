@@ -27,15 +27,17 @@ public class LoginPage extends BasePageObject {
     }
 
     public LoginPage signInUsingMailClick() {
-        waitForVisible(signInUsingMail);
+        waitForClickable(signInUsingMail);
         signInUsingMail.click();
         return this;
     }
 
     public HomePage login(String username, String password) {
-        signInMailInput.sendKeys(username);
-        signInPasswordInput.sendKeys(password);
+        fillField(signInMailInput, username);
+        fillField(signInPasswordInput, password);
         signInButton.click();
+        String xpath = "//div[@class = 'modal-wrapper']";
+        waitForInvisibility(xpath);
         return new HomePage();
     }
 

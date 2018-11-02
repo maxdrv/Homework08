@@ -1,10 +1,12 @@
 package ozon.steps;
 
 import ozon.pages.HomePage;
-import ozon.pages.LoginPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class HomePageSteps {
 
@@ -15,7 +17,7 @@ public class HomePageSteps {
 
     @Step("Нажатие по кнопке входа")
     public void myOzonSignInClick() {
-        new HomePage().myOzonSignInClick();
+        new HomePage().signIn();
     }
 
     @Step("Поиск предмета {0}")
@@ -24,7 +26,7 @@ public class HomePageSteps {
     }
 
     @Step("Добавление {0} предметов в корзину")
-    public HashSet<String> addItemsToCard(int amountOfItems) {
+    public ArrayList<String> addItemsToCard(int amountOfItems) {
         return new HomePage().addItemsToCard(amountOfItems);
     }
 
@@ -33,9 +35,14 @@ public class HomePageSteps {
         new HomePage().moveToCard();
     }
 
+    @Step("Переход в корзину2")
+    public void moveToCard2() {
+        new HomePage().moveToCard2();
+    }
+
     @Step("Выбрано выпадающее меню с кнопкой входа версия 2")
     public void repeatPopUpMenu() {
-        new HomePage().repeatPopUpMenu();
+        new HomePage().repeatSignIn();
     }
 
     @Step("Проверка имени пользователя")
