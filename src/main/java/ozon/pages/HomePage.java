@@ -10,9 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import ozon.steps.BaseSteps;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class HomePage extends BasePageObject {
@@ -51,7 +49,6 @@ public class HomePage extends BasePageObject {
     }
 
     public LoginPage signIn() {
-        //myOzonMenuSignIn.click();
         Actions action = new Actions(BaseSteps.getDriver());
         action.moveToElement(myOzonMenu).build().perform();
         action.moveToElement(myOzonMenu, 0, 160).click().build().perform();
@@ -69,13 +66,6 @@ public class HomePage extends BasePageObject {
     }
 
     public ArrayList<String> addItemsToCard(int amountOfItems) {
-/*        ArrayList<String> namesOfItems = new ArrayList<>();
-        for (int i = 0; i < amountOfItems; i++) {
-            addToCardButtonsList.get(i).click();
-            namesOfItems.add(addToCardButtonsList.get(i).getText());
-        }
-        return namesOfItems;*/
-        //button[@class = 'buy-button blue-cream enlarged button flat-button tile-buy-button']/span
         ArrayList<String> namesOfItems = new ArrayList<>();
         int j = 1;
         while (namesOfItems.size() < amountOfItems) {
@@ -105,7 +95,6 @@ public class HomePage extends BasePageObject {
     }
 
     public CardPage moveToCard() {
-        //WebElement el = BaseSteps.getDriver().findElement(By.xpath("//a[@href = '/context/cart']"));
         waitForClickable(moveToCardButton);
         moveToCardButton.click();
         return new CardPage();

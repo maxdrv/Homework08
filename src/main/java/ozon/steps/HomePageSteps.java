@@ -3,10 +3,7 @@ package ozon.steps;
 import ozon.pages.HomePage;
 import ru.yandex.qatools.allure.annotations.Step;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 
 public class HomePageSteps {
 

@@ -6,8 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import ozon.steps.BaseSteps;
 
 public class LoginPage extends BasePageObject {
-    //a[@class = 'link-base']
-    //a[contains(text(), 'Войти по почте')]"
+
     @FindBy(xpath = "//a[@class = 'link-base']")
     WebElement signInUsingMail;
 
@@ -17,8 +16,6 @@ public class LoginPage extends BasePageObject {
     @FindBy(xpath = "//input[@type = 'password']")
     WebElement signInPasswordInput;
 
-    //button[@type = 'button']
-    //button[contains(text(), 'Войти')]
     @FindBy(xpath = "//button[@type = 'button']")
     WebElement signInButton;
 

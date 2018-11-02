@@ -3,9 +3,9 @@ package ozon.steps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import ozon.util.TestBaseProperties;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ScenarioSteps {
 
@@ -27,8 +27,10 @@ public class ScenarioSteps {
     }
 
     @When("^Пользователь ввел логини и пароль$")
-    public void enterUsernamePassword() {
-        loginPageSteps.login();
+    public void enterUsernamePassword(List<String> stringList) {
+        String username = stringList.get(0);
+        String password = stringList.get(1);
+        loginPageSteps.login(username, password);
     }
 
     @Then("^Выполнить поиск по \"(.+)\"$")

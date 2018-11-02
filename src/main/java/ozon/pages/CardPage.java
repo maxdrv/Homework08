@@ -1,10 +1,7 @@
 package ozon.pages;
 
 import org.apache.http.util.Asserts;
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -12,9 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import ozon.steps.BaseSteps;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class CardPage extends BasePageObject {
 
@@ -79,11 +74,7 @@ public class CardPage extends BasePageObject {
                 e.printStackTrace();
             }
             firstButton.click();
-            /*
-            Dimension size = firstButton.getSize();
-            Actions actions = new Actions(BaseSteps.getDriver());
-            actions.moveToElement(firstButton, size.getWidth()/2, size.getHeight()/2).click().build().perform();
-*/
+
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -91,19 +82,6 @@ public class CardPage extends BasePageObject {
             }
         }
 
-/*
-        boolean present;
-        try {
-            BaseSteps.getDriver().findElement(By.xpath("removeItemsButtonBanned"));
-            present = true;
-        } catch (NoSuchElementException e) {
-            present = false;
-        }
-        if(present){
-            removeItemsButtonBanned.click();
-        }*/
-
-        //waitForVisiable(confirmTheOrderButton);
         return this;
     }
 

@@ -4,7 +4,6 @@ import ozon.pages.CardPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class CardPageSteps {
 
