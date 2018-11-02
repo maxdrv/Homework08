@@ -71,18 +71,21 @@ public class CardPage extends BasePageObject {
         for (int i = 0; i < amountOfRemoveButtons; i++) {
             WebElement firstButton = BaseSteps.getDriver().findElement(By.xpath("//div[@class = 'jsViewCollection jsChild_DOM_split']/div[1]//div[@class = 'eCartControls_buttons']"));
             waitForClickable(firstButton);
-            //clickElementJS(firstButton);
-            try {
-                Thread.sleep(2000);
+
+            try
+             {
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            firstButton.click();
+            /*
             Dimension size = firstButton.getSize();
             Actions actions = new Actions(BaseSteps.getDriver());
-            actions.moveToElement(firstButton, size.getWidth() - 1, size.getHeight() - 1).click().build().perform();
-
+            actions.moveToElement(firstButton, size.getWidth()/2, size.getHeight()/2).click().build().perform();
+*/
             try {
-                Thread.sleep(3000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

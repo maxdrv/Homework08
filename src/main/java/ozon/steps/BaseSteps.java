@@ -26,7 +26,7 @@ public class BaseSteps {
     @Before
     public static void setUp() throws Exception{
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        //options.addArguments("--headless");
 
         switch (properties.getProperty("browser")) {
             case "firefox":
