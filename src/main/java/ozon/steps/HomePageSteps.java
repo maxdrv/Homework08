@@ -1,9 +1,9 @@
 package ozon.steps;
 
-import ozon.pages.HomePage;
-import ru.yandex.qatools.allure.annotations.Step;
-
 import java.util.ArrayList;
+
+import io.qameta.allure.Step;
+import ozon.pages.HomePage;
 
 public class HomePageSteps {
 

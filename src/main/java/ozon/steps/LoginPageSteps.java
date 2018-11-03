@@ -1,8 +1,8 @@
 package ozon.steps;
 
+import io.qameta.allure.Step;
 import ozon.pages.LoginPage;
 import ozon.util.TestBaseProperties;
-import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.Properties;
 

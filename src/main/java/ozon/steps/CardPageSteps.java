@@ -1,7 +1,8 @@
 package ozon.steps;
 
+import io.qameta.allure.Step;
 import ozon.pages.CardPage;
-import ru.yandex.qatools.allure.annotations.Step;
+
 
 import java.util.ArrayList;
 
