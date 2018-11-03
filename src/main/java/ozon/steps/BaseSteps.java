@@ -8,10 +8,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import io.qameta.allure.Attachment;
 import ozon.util.ReportHelper;
 import ozon.util.TestBaseProperties;
 import ozon.util.TestUtil;
-import ru.yandex.qatools.allure.annotations.Attachment;
+
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;

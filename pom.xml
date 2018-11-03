@@ -23,12 +23,10 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/ru.yandex.qatools.allure/allure-junit-adaptor -->
-        <!--Подключение JUnit adaptor-->
         <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-junit-adaptor</artifactId>
-            <version>${allure.adapter.version}</version>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit4</artifactId>
+            <version>2.7.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
@@ -71,12 +69,18 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         -Dcucumber.options="--plugin io.qameta.allure.cucumberjvm.AllureCucumberJvm"
                     </argLine>
-                    <properties>
+                    <systemProperties>
                         <property>
-                            <name>listener</name>
-                            <value>ru.yandex.qatools.allure.junit.AllureRunListener</value>
+                            <name>allure.results.directory</name> 
+                            <value>${project.build.directory}/allure-results</value>
                         </property>
-                    </properties>
+                    </systemProperties>
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>listener</name>-->
+                            <!--<value>ru.yandex.qatools.allure.junit.AllureRunListener</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
                 </configuration>
                 <dependencies>
                     <dependency>
